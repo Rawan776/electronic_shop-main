@@ -4,7 +4,7 @@ import AddProduct from './AddProduct';
 import AddProductModel from './AddProductModel'
 import { useState } from 'react';
 
-function ProductList(props) {
+function ProductList({...props}) {
     // const [isFormVisible, setFormVisibility] = useState(false);
     return (
         <div className ="container-fluid tableContent  p-5">
@@ -30,6 +30,8 @@ function ProductList(props) {
                             image={product.image}
                             price ={product.price}
                             rating={product.rating}   
+                            onDeleteProduct={props.onDelete}
+                            onEditProduct ={props.onEdit}
                        />
                     ))}
                 </tbody>

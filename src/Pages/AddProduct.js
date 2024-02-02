@@ -19,6 +19,10 @@ function AddProduct(props) {
   });
 
   const [base64Image, setBase64Image] = useState(null);
+  const [isAdding, setIsAdding] = useState(false);
+  const [hide, setHide] = useState(false);
+
+
 
   const handleImageChange = () => {
     const file = imageRef.current.files[0];
@@ -95,7 +99,8 @@ function AddProduct(props) {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' className={classes.btn}>ADD</Button> 
+         <Button type='submit' className={classes.btn} onClick={() => { setIsAdding(true); }}>ADD</Button>
+         {isAdding && <span>Adding....</span>}
        
       </div> 
     </form>

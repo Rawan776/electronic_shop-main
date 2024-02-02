@@ -36,12 +36,61 @@ const Dashboard = () => {
     fetchProductsHandler()
   },[fetchProductsHandler]);
 
+  // Update the product list with the newly added product
   const handleAddProduct = (newProduct) => {
-    // Update the product list with the newly added product
-    //const addedProduct = { id, ...newProduct };
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
 
+  // Handle edit logic (e.g., open a modal with a form for editing)
+  const handleEdit = async(productId ,updatedProduct) => {
+     // Call API to update the product
+     try{
+    const response= await fetch(`https://PROJECT_TOKEN.mockapi.io/tasks/${productId}`, {
+    method: 'PUT', 
+    headers: {'content-type':'application/json'},
+    body: JSON.stringify(updatedProduct)
+  })
+  if(response.ok){
+       // Update the local state with the updated product
+       setProducts((prevProducts) =>
+       prevProducts.map((product) =>
+         product.id === productId ? { ...product, ...updatedProduct } : product
+       )
+     );
+
+  }
+  else {
+    // Handle error response from the API
+    console.error('Error updating product:', response.statusText);
+  }
+ }
+ catch (error) {
+  // Handle any other errors that may occur during the API request
+  console.error('Error updating product:', error.message);
+}
+}
+
+
+   const  handleDelete = async (productId) => {
+    try{
+    const response = await fetch(`https://65b7fe4a46324d531d55d562.mockapi.io/products/${productId}`, {
+      method: 'DELETE',
+    });
+    if(response.ok){
+      setProducts((prevProducts) =>
+      prevProducts.filter((product) => product.id !== productId)
+    );
+    }
+    else {
+      // Handle error response from the API
+      console.error('Error deleting product:', response.statusText);
+    }
+   }
+   catch (error) {
+    // Handle any other errors that may occur during the API request
+    console.error('Error deleting product:', error.message);
+  }
+}
   let content = <p>Loading...</p>;
 
   if(isLoading){
@@ -53,9 +102,8 @@ const Dashboard = () => {
   }
   if(products.length >= 0)
   {
-    content = <ProductList products={products}/>
+    content = <ProductList products={products} onEdit={handleEdit} onDelete={handleDelete}/>
   }
-  
   if (error) {
     content = <p>{error}</p>;
   }
