@@ -31,7 +31,7 @@ function ProductList({...props}) {
                             price ={product.price}
                             rating={product.rating}   
                             onDeleteProduct={props.onDelete}
-                            onEditProduct ={props.onEdit}
+                            // onEditProduct ={props.onEdit}
                        />
                     ))}
                 </tbody>

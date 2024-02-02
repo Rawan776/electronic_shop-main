@@ -5,12 +5,15 @@ import FooterSection from '../Components/footerSection';
 import ProductList from './ProductList';
 import AddProductModel from './AddProductModel'
 import Classes from './Dashboard.module.css';
+import EditProductModal from './EditProductModal';
 
 const Dashboard = () => {
   const [products ,setProducts] = useState([]);
   const [error ,setError] = useState(null);
   const [isLoading ,setisLoading] = useState(true);
   const [isFormVisible, setFormVisibility] = useState(false);
+  // const [selectedProduct, setSelectedProduct] = useState(null);
+  // const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
 
 
@@ -40,34 +43,34 @@ const Dashboard = () => {
   const handleAddProduct = (newProduct) => {
     setProducts((prevProducts) => [...prevProducts, newProduct]);
   };
-
+  
   // Handle edit logic (e.g., open a modal with a form for editing)
   const handleEdit = async(productId ,updatedProduct) => {
      // Call API to update the product
-     try{
-    const response= await fetch(`https://PROJECT_TOKEN.mockapi.io/tasks/${productId}`, {
-    method: 'PUT', 
-    headers: {'content-type':'application/json'},
-    body: JSON.stringify(updatedProduct)
-  })
-  if(response.ok){
-       // Update the local state with the updated product
-       setProducts((prevProducts) =>
-       prevProducts.map((product) =>
-         product.id === productId ? { ...product, ...updatedProduct } : product
-       )
-     );
+//      try{
+//     const response= await fetch(`https://PROJECT_TOKEN.mockapi.io/tasks/${productId}`, {
+//     method: 'PUT', 
+//     headers: {'content-type':'application/json'},
+//     body: JSON.stringify(updatedProduct)
+//   })
+//   if(response.ok){
+//        // Update the local state with the updated product
+//        setProducts((prevProducts) =>
+//        prevProducts.map((product) =>
+//          product.id === productId ? { ...product, ...updatedProduct } : product
+//        )
+//      );
 
-  }
-  else {
-    // Handle error response from the API
-    console.error('Error updating product:', response.statusText);
-  }
- }
- catch (error) {
-  // Handle any other errors that may occur during the API request
-  console.error('Error updating product:', error.message);
-}
+//   }
+//   else {
+//     // Handle error response from the API
+//     console.error('Error updating product:', response.statusText);
+//   }
+//  }
+//  catch (error) {
+//   // Handle any other errors that may occur during the API request
+//   console.error('Error updating product:', error.message);
+// }
 }
 
 
