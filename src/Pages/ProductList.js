@@ -18,6 +18,7 @@ function ProductList(props) {
                         <th>Product</th>
                         <th>Price</th>
                         <th>Rating</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

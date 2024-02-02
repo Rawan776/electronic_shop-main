@@ -10,16 +10,31 @@ function AddProduct(props) {
   const imageRef = useRef('');
   const ratingRef = useRef('');
   const PriceRef = useRef('');
-  const [formValidity ,setformValidity] =useState({
+
+  const [formValidity ,setformValidity] = useState({
     title:true,
     image:true,
     rating:true,
     price:true,
   });
 
+  const [base64Image, setBase64Image] = useState(null);
+
+  const handleImageChange = () => {
+    const file = imageRef.current.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setBase64Image(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  }
   function submitHandler(event) {
     event.preventDefault();
 
+    //  console.log(imageRef.current.value);
+    //   console.log(base64Image);
     const enteredTitle = !isEmpty(titleRef.current.value);
     const selectedImage=!isEmpty(imageRef.current.value);
     const enteredRating =!isEmpty(ratingRef.current.value) && isNotIntervalFive(ratingRef.current.value);
@@ -38,33 +53,19 @@ function AddProduct(props) {
     if(FormValid){
       const product = {
         title: titleRef.current.value,
-        image : imageRef.current.value,
+        image : base64Image,
         rating : ratingRef.current.value,
         price : PriceRef.current.value,
       };
        
       props.onAddProduct(product);
-
     }
  
   }
 
 
 
-  // const handleImageChange = (e) => {
-  //   const file = e.target.files[0];
-  //   console.log(file);
-  //   if (file) {
-  //     // Use FileReader to convert the selected image to a data URL
-  //     const reader = new FileReader();
-  //     reader.onloadend = () => {
-  //       setSelectedImage(reader.result);
-  //     };
-  //     reader.readAsDataURL(file);
-  //   } else {
-  //     setSelectedImage(null);
-  //   }
-  // };
+  
 
   return (
     <form onSubmit={submitHandler}>
@@ -75,7 +76,7 @@ function AddProduct(props) {
       </div>
       <div className={classes.control}>
         <label htmlFor='image'>image</label>
-        <input type="file" id="image" accept="image/*"  ref={imageRef} />
+        <input type="file" id="image" accept="image/*"  ref={imageRef} onChange={handleImageChange}/>
         {!formValidity.image&& <p style={{color:'red'}}>please select image </p>}
       </div>
       <div className={classes.control}>
@@ -90,7 +91,8 @@ function AddProduct(props) {
       </div>
       <div>
          {/* toast is appear succesfully */}
-        <Button type='submit' className={classes.btn}>ADD</Button>
+         <Button type='submit' className={classes.btn}>ADD</Button> 
+       
       </div> 
     </form>
   );

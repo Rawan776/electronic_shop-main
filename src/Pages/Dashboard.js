@@ -42,10 +42,11 @@ const Dashboard = () => {
       </section>
     )
   }
-  if(products.length > 0)
+  if(products.length >= 0)
   {
     content = <ProductList products={products}/>
   }
+  
   if (error) {
     content = <p>{error}</p>;
   }

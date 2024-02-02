@@ -30,7 +30,7 @@ function AddProductModel(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-       <AddProductForm onAddProduct={AddProductHandler}/>
+       <AddProductForm onAddProduct={AddProductHandler} onHide={props.onHide}/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
