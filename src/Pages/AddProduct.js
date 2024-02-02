@@ -30,6 +30,7 @@ function AddProduct(props) {
       reader.readAsDataURL(file);
     }
   }
+
   function submitHandler(event) {
     event.preventDefault();
 
@@ -57,8 +58,11 @@ function AddProduct(props) {
         rating : ratingRef.current.value,
         price : PriceRef.current.value,
       };
-       
+            
+      //added to api
       props.onAddProduct(product);
+      //update table once added
+      //props.onAddProductState(...product);
     }
  
   }

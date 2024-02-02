@@ -1,7 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import AddProductForm from './AddProduct'
+import { useState } from 'react';
 function AddProductModel(props) {
+  const  [ID , setID] = useState('');
 
     async function AddProductHandler(product) {
         const response = await fetch('https://65b7fe4a46324d531d55d562.mockapi.io/products', {
@@ -13,7 +15,8 @@ function AddProductModel(props) {
         });
         const data = await response.json();
         console.log(data);
-        
+        setID(data.id);
+        props.onAddProduct(data);
     }
 
 
@@ -30,7 +33,7 @@ function AddProductModel(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-       <AddProductForm onAddProduct={AddProductHandler} onHide={props.onHide}/>
+       <AddProductForm onAddProduct={AddProductHandler}  onHide={props.onHide}/>
       </Modal.Body>
       <Modal.Footer>
         <Button onClick={props.onHide}>Close</Button>
@@ -38,5 +41,6 @@ function AddProductModel(props) {
     </Modal>
   );
 }
+// onAddProductState={props.onAddProduct}
 
 export default AddProductModel;
