@@ -5,11 +5,8 @@ import AddProductModel from './AddProductModel'
 import { useState } from 'react';
 
 function ProductList({...props}) {
-    // const [isFormVisible, setFormVisibility] = useState(false);
     return (
         <div className ="container-fluid tableContent  p-5">
-            {/* <div className='btn border border-rounded mb-2' onClick={()=>setFormVisibility(true)}> Add product </div>
-            <AddProductModel show={isFormVisible} onHide={() => setFormVisibility(false)} onAddProduct={props.onAddProduct}/> */}
             <table>
                 <thead>
                     <tr>
@@ -31,7 +28,8 @@ function ProductList({...props}) {
                             price ={product.price}
                             rating={product.rating}   
                             onDeleteProduct={props.onDelete}
-                            // onEditProduct ={props.onEdit}
+                            onEditProduct={props.onEdit}
+
                        />
                     ))}
                 </tbody>

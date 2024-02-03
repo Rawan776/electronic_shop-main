@@ -20,7 +20,6 @@ function AddProduct(props) {
 
   const [base64Image, setBase64Image] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
-  const [hide, setHide] = useState(false);
 
 
 
@@ -100,7 +99,7 @@ function AddProduct(props) {
       <div>
          {/* toast is appear succesfully */}
          <Button type='submit' className={classes.btn} onClick={() => { setIsAdding(true); }}>ADD</Button>
-         {isAdding && <span>Adding....</span>}
+         {formValidity.title && formValidity.image && formValidity.price&&formValidity.rating&&isAdding && <span>Adding....</span>}
        
       </div> 
     </form>
