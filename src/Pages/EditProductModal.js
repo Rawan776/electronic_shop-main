@@ -6,6 +6,9 @@ const EditProductModal = (props) => {
   const [isChangeImg , setisChangeImage] = useState(false);
   const [base64Image, setBase64Image] = useState(props.product.image);
 
+  const [isUpdating, setIsUpdating] = useState(false);
+
+
   const [values ,setValues] =useState({
       title: props.product.title,
       image : props.product.image,
@@ -96,7 +99,9 @@ const EditProductModal = (props) => {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit'>update</Button>
+         <Button type='submit' onClick={() => { setIsUpdating(true); }}>update</Button>
+         {isUpdating && <span>updating....</span>}
+
        
       </div> 
     </form>

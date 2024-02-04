@@ -13,6 +13,9 @@ import InstgramSection from './Components/instgramSection';
 import Banner2Section from './Components/banner2Section';
 import FooterSection from './Components/footerSection';
 
+
+
+
 function App() {
   return (
     <React.Fragment>
@@ -22,7 +25,6 @@ function App() {
       <BrandLogos />
       <NewArrival />
       <ShopCollection />
-      {/* have props of array of object of data to update */}
       <BestSeller />
       <BannerSection/>
       <ValueSection/>

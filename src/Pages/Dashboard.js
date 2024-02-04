@@ -1,11 +1,10 @@
 //Dasboard
-import React ,{useCallback ,useState ,useEffect} from 'react';
+import React ,{useState ,useEffect} from 'react';
 import Navbar_main from '../Components/Navbar_main';
 import FooterSection from '../Components/footerSection';
 import ProductList from './ProductList';
 import AddProductModel from './AddProductModel'
 import Classes from './Dashboard.module.css';
-import EditProductModal from './EditProductModal';
 
 const Dashboard = () => {
   const [products ,setProducts] = useState([]);
@@ -13,10 +12,7 @@ const Dashboard = () => {
   const [isLoading ,setisLoading] = useState(true);
   const [isFormVisible, setFormVisibility] = useState(false);
 
-
-
-
-  const fetchProductsHandler = useCallback( async ()=>{
+  const fetchProductsHandler = async ()=>{
     setError(null);
     try{
       const response = await fetch ('https://65b7fe4a46324d531d55d562.mockapi.io/products');
@@ -32,11 +28,11 @@ const Dashboard = () => {
     catch(error){
       setError(error.message);
     }
-  },[]);
+  };
 
   useEffect(()=>{
     fetchProductsHandler()
-  },[fetchProductsHandler]);
+  },[]);
 
   // Update the product list with the newly added product
   const handleAddProduct = (newProduct) => {
@@ -51,14 +47,6 @@ const Dashboard = () => {
         )
       );
   };
-
-
-  
-   //   
-       // Close the edit form
-      //  setEditModalOpen(false);
-
-
 
    const  handleDelete = async (productId) => {
     try{
@@ -79,7 +67,9 @@ const Dashboard = () => {
     // Handle any other errors that may occur during the API request
     console.error('Error deleting product:', error.message);
   }
-}
+   }
+
+  // render products
   let content = <p>Loading...</p>;
 
   if(isLoading){
