@@ -4,7 +4,7 @@ import './Dashboard.module.css'
 import EditProductModal from './EditProductModal';
 
 const Product = (props) => {
-  const [updatedProduct , setUpdatedProduct]=useState("");
+  const [openDeleteModel , setopenDeleteModel]=useState(false);
   const[openEditModel ,setEditModalOpen] = useState(false);
 
   const selectedProduct ={
@@ -19,16 +19,6 @@ const Product = (props) => {
     // Call the onDeleteProduct function passed from the parent
     props.onDeleteProduct(props.id);
   };
-  //console.log(openEditModel);
-  // const handleEdit = () => {
-  //   // Call the onEditProduct function passed from the parent
-
-  //   props.onEditProduct(props.id);
-  // };
-
-  // const handleUpdatedProduct = (updatedProduct) => {
-  //  setUpdatedProduct(updatedProduct);
-  // }
 
   return (
     <tr>

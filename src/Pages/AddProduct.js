@@ -1,6 +1,10 @@
 import React, { useRef , useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import classes from './AddProduct.module.css';
+import toast from 'react-hot-toast';
+
+const notify = () => toast.success('Successfully Added!');
+
 
 const isEmpty =(value) => value.trim() === '';
 const isNotIntervalFive =(value)=> value<=5 && value >=1 ;
@@ -98,8 +102,8 @@ function AddProduct(props) {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' className={classes.btn} onClick={() => { setIsAdding(true); }}>ADD</Button>
-         {formValidity.title && formValidity.image && formValidity.price&&formValidity.rating&&isAdding && <span>Adding....</span>}
+         <Button type='submit' className={classes.btn} onClick={() => { props.onClose();notify() }}>ADD</Button>
+         {/* {formValidity.title && formValidity.image && formValidity.price&&formValidity.rating&&isAdding && <span>Adding....</span>} */}
        
       </div> 
     </form>

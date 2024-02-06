@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import classes from './AddProduct.module.css';
+import toast from 'react-hot-toast';
+
+const notify = () => toast.success('Successfully Updated!');
 const EditProductModal = (props) => {
   const [isChangeImg , setisChangeImage] = useState(false);
   const [base64Image, setBase64Image] = useState(props.product.image);
@@ -99,8 +102,8 @@ const EditProductModal = (props) => {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' onClick={() => { setIsUpdating(true); }}>update</Button>
-         {isUpdating && <span>updating....</span>}
+         <Button type='submit' onClick={() => { props.onHide();notify() }}>update</Button>
+         {/* {isUpdating && <span>updating....</span>} */}
 
        
       </div> 

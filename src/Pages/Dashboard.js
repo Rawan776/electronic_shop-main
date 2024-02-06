@@ -5,12 +5,14 @@ import FooterSection from '../Components/footerSection';
 import ProductList from './ProductList';
 import AddProductModel from './AddProductModel'
 import Classes from './Dashboard.module.css';
+import {Toaster} from 'react-hot-toast';
 
 const Dashboard = () => {
   const [products ,setProducts] = useState([]);
   const [error ,setError] = useState(null);
   const [isLoading ,setisLoading] = useState(true);
   const [isFormVisible, setFormVisibility] = useState(false);
+  
 
   const fetchProductsHandler = async ()=>{
     setError(null);
@@ -96,6 +98,7 @@ const Dashboard = () => {
        onHide={() => setFormVisibility(false)} 
        onAddProduct={(newProduct)=>{handleAddProduct(newProduct) ; setFormVisibility(false)}
     }/>
+      <Toaster position='top-center'/>
       {content}
       <FooterSection />
     </React.Fragment>
