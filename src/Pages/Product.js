@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 
 import './Dashboard.module.css'
 import EditProductModal from './EditProductModal';
+import DeleteProductModel from './DeleteProductModel';
 
 const Product = (props) => {
-  const [openDeleteModel , setopenDeleteModel]=useState(false);
   const[openEditModel ,setEditModalOpen] = useState(false);
 
   const selectedProduct ={
@@ -14,7 +14,7 @@ const Product = (props) => {
     price:props.price,
     rate:props.rating
   }
- // console.log(selectedProduct);
+
   const handleDelete = () => {
     // Call the onDeleteProduct function passed from the parent
     props.onDeleteProduct(props.id);
