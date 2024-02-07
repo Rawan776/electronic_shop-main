@@ -5,6 +5,7 @@ import { useState } from 'react';
 function AddProductModel(props) {
   //const  [ID , setID] = useState('');
 
+
     async function AddProductHandler(product) {
         const response = await fetch('https://65b7fe4a46324d531d55d562.mockapi.io/products', {
           method: 'POST',
@@ -13,9 +14,11 @@ function AddProductModel(props) {
             'Content-Type': 'application/json'
           }
         });
+        if(!response.ok){
+          console.log("error loading data");
+        }
         const data = await response.json();
         console.log(data);
-       // setID(data.id);
         props.onAddProduct(data);
     }
 

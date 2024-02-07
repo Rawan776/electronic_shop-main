@@ -4,7 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import classes from './AddProduct.module.css';
 import toast from 'react-hot-toast';
 
-const notify = () => toast.success('Successfully Updated!');
+//const notify = () => toast.success('Successfully Updated!');
 const EditProductModal = (props) => {
   const [isChangeImg , setisChangeImage] = useState(false);
   const [base64Image, setBase64Image] = useState(props.product.image);
@@ -39,14 +39,14 @@ const EditProductModal = (props) => {
     const editedProduct = {
       title: values.title,
       image : base64Image,
-      rating : values.rating,
-      price : values.price,
+      rating : parseInt(values.rating),
+      price : parseFloat(values.price),
     };
 
      // Call API to update the product
       try{
      const response= await fetch(`https://65b7fe4a46324d531d55d562.mockapi.io/products/${props.product.id}`, {
-    method: 'PUT', 
+     method: 'PUT', 
      headers: {'content-type':'application/json'},
      body: JSON.stringify(editedProduct)
    })
@@ -57,6 +57,8 @@ const EditProductModal = (props) => {
      const data = await response.json();
      
      props.onEditProduct(data);
+     setIsUpdating(false);
+     //setisChangeImage(false);
    }
   }
   catch (error) {
@@ -102,8 +104,7 @@ const EditProductModal = (props) => {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' onClick={() => { props.onHide();notify() }}>update</Button>
-         {/* {isUpdating && <span>updating....</span>} */}
+         <Button type='submit' onClick={()=>setIsUpdating(true)} > {isUpdating? 'Updating...':'Update'}</Button>
 
        
       </div> 

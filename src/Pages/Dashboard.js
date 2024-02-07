@@ -6,6 +6,9 @@ import ProductList from './ProductList';
 import AddProductModel from './AddProductModel'
 import Classes from './Dashboard.module.css';
 import {Toaster} from 'react-hot-toast';
+import toast from 'react-hot-toast';
+
+const notify = () => toast.success('Successfully Added!');
 
 const Dashboard = () => {
   const [products ,setProducts] = useState([]);
@@ -96,7 +99,7 @@ const Dashboard = () => {
       <AddProductModel 
        show={isFormVisible}
        onHide={() => setFormVisibility(false)} 
-       onAddProduct={(newProduct)=>{handleAddProduct(newProduct) ; setFormVisibility(false)}
+       onAddProduct={(newProduct)=>{handleAddProduct(newProduct) ; setFormVisibility(false) ; notify() }
     }/>
       <Toaster position='top-center'/>
       {content}

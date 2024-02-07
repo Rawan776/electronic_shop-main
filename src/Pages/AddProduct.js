@@ -1,9 +1,7 @@
 import React, { useRef , useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import classes from './AddProduct.module.css';
-import toast from 'react-hot-toast';
 
-const notify = () => toast.success('Successfully Added!');
 
 
 const isEmpty =(value) => value.trim() === '';
@@ -23,7 +21,8 @@ function AddProduct(props) {
   });
 
   const [base64Image, setBase64Image] = useState(null);
-  const [isAdding, setIsAdding] = useState(false);
+  const [isloading, setIsloading] = useState(false);
+
 
 
 
@@ -62,8 +61,8 @@ function AddProduct(props) {
       const product = {
         title: titleRef.current.value,
         image : base64Image,
-        rating : ratingRef.current.value,
-        price : PriceRef.current.value,
+        rating : parseInt(ratingRef.current.value),
+        price : parseFloat(PriceRef.current.value),
       };
             
       //added to api
@@ -102,7 +101,7 @@ function AddProduct(props) {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' className={classes.btn} onClick={() => { props.onClose();notify() }}>ADD</Button>
+         <Button type='submit' className={classes.btn} onClick={()=>setIsloading(true)} > {isloading? 'Adding...':'ADD'}</Button>
          {/* {formValidity.title && formValidity.image && formValidity.price&&formValidity.rating&&isAdding && <span>Adding....</span>} */}
        
       </div> 
