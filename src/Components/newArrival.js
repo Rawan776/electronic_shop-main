@@ -1,4 +1,4 @@
-//useEffect hook akso here and make each item have same design of first as it will appear when have hover
+// make each item have same design of first as it will appear when have hover
 import React from "react";
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
@@ -44,6 +44,9 @@ function newArrival() {
                             alt="beats image"
                         />
                         <div className="custom-hot-text">NEW</div>
+                        <div className="card-img-overlay  d-flex align-items-end">
+
+                        <div className="overlay-card">
                         <div className="custom-fav-icon">
                             <img src="./images/Line.png" alt="fav-icon" />
                         </div>
@@ -55,6 +58,8 @@ function newArrival() {
                             >
                                 Add to cart
                             </a>
+                        </div>
+                        </div>
                         </div>
                         <div className="card-body">
                             <div className="d-flex mt-2 mb-2">
@@ -124,7 +129,22 @@ function newArrival() {
                             alt="beats studio pro"
                         />
                         <div className="custom-hot-text">NEW</div>
-                        <div className="card-img-overlay d-flex align-items-end"></div>
+                        <div className="card-img-overlay d-flex align-items-end">
+                        <div className="overlay-card">
+                        <div className="custom-fav-icon">
+                            <img src="./images/Line.png" alt="fav-icon" />
+                        </div>
+                        <div className="card-fix-button">
+                            <a
+                                href="#"
+                                className="btn btn-dark  prevent-active"
+                                style={{ width: "100%" }}
+                            >
+                                Add to cart
+                            </a>
+                        </div>
+                        </div>
+                        </div>
                         <div className="card-body">
                             <div className="d-flex mt-2 mb-2">
                                 <svg
@@ -191,7 +211,22 @@ function newArrival() {
                             alt="sony image"
                         />
                         <div className="custom-hot-text">NEW</div>
-                        <div className="card-img-overlay d-flex align-items-end"></div>
+                        <div className="card-img-overlay d-flex align-items-end">
+                        <div className="overlay-card">
+                        <div className="custom-fav-icon">
+                            <img src="./images/Line.png" alt="fav-icon" />
+                        </div>
+                        <div className="card-fix-button">
+                            <a
+                                href="#"
+                                className="btn btn-dark  prevent-active"
+                                style={{ width: "100%" }}
+                            >
+                                Add to cart
+                            </a>
+                        </div>
+                        </div>
+                        </div>
                         <div className="card-body">
                             <div className="d-flex mt-2 mb-2">
                                 <svg
@@ -260,7 +295,22 @@ function newArrival() {
                             alt="rail True Wireless Earbuds image"
                         />
                         <div className="custom-hot-text">NEW</div>
-                        <div className="card-img-overlay d-flex align-items-end"></div>
+                        <div className="card-img-overlay d-flex align-items-end">
+                        <div className="overlay-card">
+                        <div className="custom-fav-icon">
+                            <img src="./images/Line.png" alt="fav-icon" />
+                        </div>
+                        <div className="card-fix-button">
+                            <a
+                                href="#"
+                                className="btn btn-dark  prevent-active"
+                                style={{ width: "100%" }}
+                            >
+                                Add to cart
+                            </a>
+                        </div>
+                        </div>
+                        </div>
                         <div className="card-body">
                             <div className="d-flex mt-2 mb-2">
                                 <svg
@@ -329,7 +379,22 @@ function newArrival() {
                             alt="beats image"
                         />
                         <div className="custom-hot-text">NEW</div>
-                        <div className="card-img-overlay d-flex align-items-end" />
+                        <div className="card-img-overlay d-flex align-items-end">
+                        <div className="overlay-card">
+                        <div className="custom-fav-icon">
+                            <img src="./images/Line.png" alt="fav-icon" />
+                        </div>
+                        <div className="card-fix-button">
+                            <a
+                                href="#"
+                                className="btn btn-dark  prevent-active"
+                                style={{ width: "100%" }}
+                            >
+                                Add to cart
+                            </a>
+                        </div>
+                        </div>
+                        </div>
                         <div className="card-body">
                             <div className="d-flex mt-2 mb-2">
                                 <svg

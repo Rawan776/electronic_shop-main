@@ -72,3 +72,10 @@ tbody {
 	font-size: medium;
 	color: rgba(255, 171, 0, 0.64);
 }
+
+@media screen and (max-width: 991px){
+    th,td{
+        padding: 3%;
+  
+    }
+  }

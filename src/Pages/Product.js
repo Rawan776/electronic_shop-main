@@ -26,9 +26,9 @@ const Product = (props) => {
     // Call the onDeleteProduct function passed from the parent
     props.onDeleteProduct(props.id);
     setDeleteModalOpen(false);
-    setTimeout(() => {
-      notifyDelete();
-    }, 2000);
+    // setTimeout(() => {
+    //   notifyDelete();
+    // }, 2000);
        
   };
   const handleEdit=(editedProduct) => {

@@ -4,7 +4,11 @@ import Modal from 'react-bootstrap/Modal';
 import classes from './AddProduct.module.css';
 import toast from 'react-hot-toast';
 
-//const notify = () => toast.success('Successfully Updated!');
+
+const isEmpty =(value) => value.trim() === '';
+const isNotIntervalFive =(value)=> value<=5 && value >=1 ;
+
+
 const EditProductModal = (props) => {
   const [isChangeImg , setisChangeImage] = useState(false);
   const [base64Image, setBase64Image] = useState(props.product.image);
@@ -19,6 +23,8 @@ const EditProductModal = (props) => {
       price : props.product.price,
   });
   
+  const [ratingInterval ,setisRatingInterval]=useState(true);
+
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -35,14 +41,19 @@ const EditProductModal = (props) => {
 
     event.preventDefault();
 
+    const enteredRating = isNotIntervalFive(values.rating);
+    setisRatingInterval(enteredRating);
+    console.log(ratingInterval);
+    console.log(enteredRating);
     // Call the onUpdateProduct callback with the edited product data
+  if(enteredRating){
     const editedProduct = {
       title: values.title,
       image : base64Image,
       rating : parseInt(values.rating),
       price : parseFloat(values.price),
     };
-
+  
      // Call API to update the product
       try{
      const response= await fetch(`https://65b7fe4a46324d531d55d562.mockapi.io/products/${props.product.id}`, {
@@ -66,7 +77,7 @@ const EditProductModal = (props) => {
    console.error('Error updating product:', error.message);
  }
 
-
+    }
 }
 
 
@@ -97,6 +108,7 @@ const EditProductModal = (props) => {
       <div className={classes.control}>
         <label htmlFor='rating'>Rate product [1-5] : </label>
         <input type='text' id='rating' value={values.rating} onChange={e=>setValues({...values,rating:e.target.value})} />
+        {!ratingInterval && <p style={{color:'red'}}>please enter rate [1-5] </p>}
       </div>
       <div className={classes.control}>
         <label htmlFor='price'>Price : </label>
@@ -104,7 +116,7 @@ const EditProductModal = (props) => {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' onClick={()=>setIsUpdating(true)} > {isUpdating? 'Updating...':'Update'}</Button>
+         <Button type='submit' onClick={()=>setIsUpdating(true)} > {isUpdating &&ratingInterval? 'Updating...':'Update'}</Button>
 
        
       </div> 

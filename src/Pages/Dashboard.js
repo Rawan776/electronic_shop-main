@@ -9,6 +9,7 @@ import {Toaster} from 'react-hot-toast';
 import toast from 'react-hot-toast';
 
 const notify = () => toast.success('Successfully Added!');
+const notifyDelete= () => toast.success('Successfully Deleted!');
 
 const Dashboard = () => {
   const [products ,setProducts] = useState([]);
@@ -62,6 +63,7 @@ const Dashboard = () => {
       setProducts((prevProducts) =>
       prevProducts.filter((product) => product.id !== productId)
     );
+    notifyDelete();
     }
     else {
       // Handle error response from the API

@@ -101,7 +101,7 @@ function AddProduct(props) {
       </div>
       <div>
          {/* toast is appear succesfully */}
-         <Button type='submit' className={classes.btn} onClick={()=>setIsloading(true)} > {isloading? 'Adding...':'ADD'}</Button>
+         <Button type='submit' className={classes.btn} onClick={()=>setIsloading(true)} > {isloading &&formValidity.title && formValidity.image && formValidity.price&&formValidity.rating? 'Adding...':'ADD'}</Button>
          {/* {formValidity.title && formValidity.image && formValidity.price&&formValidity.rating&&isAdding && <span>Adding....</span>} */}
        
       </div> 
